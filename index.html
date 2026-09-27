@@ -241,7 +241,7 @@ function pageSize(){
 let sz=pageSize(), flip;
 function makeFlip(startIdx){
  if(flip){try{flip.destroy()}catch(e){}bookEl.innerHTML='';pagesEl.forEach(p=>{p.removeAttribute('style');p.className='page';bookEl.appendChild(p)});}
- flip=new St.PageFlip(bookEl,{width:sz.w,height:sz.h,size:'fixed',showCover:true,usePortrait:sz.portrait,maxShadowOpacity:.45,flippingTime:750,mobileScrollSupport:false,swipeDistance:20,clickEventForward:true,useMouseEvents:true,startPage:startIdx||0,drawShadow:true});
+ flip=new St.PageFlip(bookEl,{width:sz.w,height:sz.h,size:'fixed',showCover:true,usePortrait:sz.portrait,maxShadowOpacity:.45,flippingTime:750,mobileScrollSupport:false,swipeDistance:20,clickEventForward:true,useMouseEvents:true,disableFlipByClick:true,startPage:startIdx||0,drawShadow:true});
  flip.loadFromHTML(pagesEl);window._flip=flip;
  flip.on('flip',()=>sync());
  flip.on('changeState',e=>{if(e.data==='flipping')$('#hint').classList.add('hide')});
